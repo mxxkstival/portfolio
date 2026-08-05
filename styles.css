@@ -101,6 +101,104 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
 .interest-list { margin-top: 14px; }
 .interest-list span { font-size: .72rem; }
 
+/* About - Core Skill (게이지 바) & Education / Experience 스타일 */
+.sub-title {
+  font-family: inherit;
+  font-size: 1.04rem;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+.about-skill-section {
+  margin-top: 24px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.skill-info {
+  display: flex;
+  flex-direction: column;
+}
+.skill-info strong {
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+.skill-info span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.skill-bar {
+  height: 8px;
+  background: color-mix(in srgb, var(--mist) 35%, transparent);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--line);
+}
+.skill-bar .fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 24px;
+}
+.history-panel {
+  padding: 24px;
+}
+.history-title {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.history-list li {
+  position: relative;
+  padding-left: 16px;
+  border-left: 2px solid var(--mist);
+}
+.history-list .h-date {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.history-list strong {
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+.history-list p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 2px 0 0;
+}
+
 /* Career Summary Timeline (반응형 Grid) */
 .career-summary-timeline {
   display: grid;
@@ -400,6 +498,7 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   .hero { min-height: auto; }
   .hero-grid { grid-template-columns: 1fr; gap: 42px; }
   .about-grid, .practice-grid, .ongoing-list { grid-template-columns: 1fr; }
+  .skill-grid, .about-history-grid { grid-template-columns: 1fr; }
   .archive-grid { grid-template-columns: repeat(2, 1fr); }
   .timeline-item { grid-template-columns: 1fr; }
   .year { padding: 0; }

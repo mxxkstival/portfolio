@@ -58,8 +58,28 @@ topButton?.addEventListener('click', () => {
   setActive('hero');
 });
 
-// 프로젝트 카테고리 필터링 기능
+// Skill Bar 스크롤 감지 및 차오르는 모션 애니메이션
 document.addEventListener('DOMContentLoaded', () => {
+  const skillSection = document.querySelector('.about-skill-section');
+  const skillFills = document.querySelectorAll('.skill-bar .fill');
+
+  if (skillSection && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          skillFills.forEach(fill => {
+            const progress = fill.getAttribute('data-progress');
+            fill.style.width = progress;
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(skillSection);
+  }
+
+  // 프로젝트 카테고리 필터링 기능
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectItems = document.querySelectorAll('#projectList .timeline-item');
 
