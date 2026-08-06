@@ -30,18 +30,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- External Library: Supabase CDN (script.js보다 상단 배치) -->
+    <!-- External Library: Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
   <body>
     <header class="topbar">
       <div class="container nav-wrap">
         <a class="brand" href="#hero" aria-label="See Yoon Soon home">SEE YOON SOON</a>
+        
         <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
+
         <nav class="nav-links" aria-label="주요 메뉴">
-          <a href="#about">About</a><a href="#projects">Projects</a><a href="#practice">Practice</a><a href="#ongoing">Ongoing</a><a href="#archive">Archive</a><a href="#contact">Contact</a>
+          <a href="#about" data-i18n="nav_about">About</a>
+          <a href="#projects" data-i18n="nav_projects">Projects</a>
+          <a href="#practice" data-i18n="nav_practice">Practice</a>
+          <a href="#ongoing" data-i18n="nav_ongoing">Ongoing</a>
+          <a href="#archive" data-i18n="nav_archive">Archive</a>
+          <a href="#contact" data-i18n="nav_contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -50,12 +57,15 @@
       <section id="hero" class="hero section">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">Personal Archive</p>
+            <p class="eyebrow" data-i18n="hero_eyebrow">Personal Archive</p>
             <h1>See Yoon Soon</h1>
-            <p class="hero-slogan">보고, 기록하고, 연결하는 문화예술 아카이브</p>
-            <p class="lead">전시와 영화제의 현장에서 사람과 콘텐츠가 만나는 순간을 기록합니다. 관람객이 더 쉽게 이해하고 더 오래 기억할 수 있도록 홍보, 운영, 아카이브의 접점을 설계하는 일에 관심이 있습니다.</p>
+            <p class="hero-slogan" data-i18n="hero_slogan">보고, 기록하고, 연결하는 문화예술 아카이브</p>
+            <p class="lead" data-i18n="hero_lead">전시와 영화제의 현장에서 사람과 콘텐츠가 만나는 순간을 기록합니다. 관람객이 더 쉽게 이해하고 더 오래 기억할 수 있도록 홍보, 운영, 아카이브의 접점을 설계하는 일에 관심이 있습니다.</p>
             <div class="tag-list" aria-label="전문 분야"><span>#PR&amp;Marketing</span><span>#Operation</span><span>#Culture</span><span>#Archive</span></div>
-            <div class="cta-row"><a class="btn primary" href="#projects">View Projects</a><a class="btn secondary" href="#archive">Download Portfolio</a></div>
+            <div class="cta-row">
+              <a class="btn primary" href="#projects" data-i18n="hero_btn_projects">View Projects</a>
+              <a class="btn secondary" href="#archive" data-i18n="hero_btn_portfolio">Download Portfolio</a>
+            </div>
           </div>
           <aside class="memo-card" aria-label="현재 작업 메모">
             <div class="memo-header"><span>Today’s Sticker</span><span aria-hidden="true">●</span></div>
@@ -66,25 +76,25 @@
             <dl class="memo-status"><div><dt>Last updated</dt><dd>2026.08</dd></div><div><dt>Currently building</dt><dd>A cultural archive in progress</dd></div></dl>
           </aside>
         </div>
-        <a class="scroll-cue" href="#about" aria-label="About 섹션으로 이동"><span>Scroll to explore</span><i aria-hidden="true"></i></a>
+        <a class="scroll-cue" href="#about" aria-label="About 섹션으로 이동"><span data-i18n="hero_scroll">Scroll to explore</span><i aria-hidden="true"></i></a>
       </section>
 
       <section id="about" class="section section-tint">
         <div class="container">
           <div class="section-heading">
             <p class="eyebrow">About</p>
-            <h2>영향력 있는 삶을 기획하고 도전하는 기록가</h2>
+            <h2 data-i18n="about_title">영향력 있는 삶을 기획하고 도전하는 기록가</h2>
           </div>
 
           <div class="about-grid">
             <article class="panel about-intro">
               <h3>Hello, I’m Siyoon</h3>
-              <p>문화예술 현장의 작은 맥락을 놓치지 않으려 합니다. 관람객의 질문과 동선, 팀의 운영 방식, 콘텐츠가 남기는 인상을 관찰하고 더 나은 경험으로 연결합니다.</p>
+              <p data-i18n="about_intro_p">문화예술 현장의 작은 맥락을 놓치지 않으려 합니다. 관람객의 질문과 동선, 팀의 운영 방식, 콘텐츠가 남기는 인상을 관찰하고 더 나은 경험으로 연결합니다.</p>
             </article>
             <article class="panel">
               <h3>Today’s Sticker</h3>
               <button class="sticker-button" id="stickerButton" type="button">observing &amp; organizing</button>
-              <p class="small-copy">오늘의 작업 리듬을 가볍게 기록합니다.</p>
+              <p class="small-copy" data-i18n="about_sticker_desc">오늘의 작업 리듬을 가볍게 기록합니다.</p>
             </article>
             <article class="panel">
               <h3>Current Interest</h3>
@@ -100,21 +110,21 @@
               <div class="skill-item">
                 <div class="skill-info">
                   <strong>Figma / Design</strong>
-                  <span>카드뉴스, 웹 상세페이지 디자인</span>
+                  <span data-i18n="skill_figma">카드뉴스, 웹 상세페이지 디자인</span>
                 </div>
                 <div class="skill-bar"><span class="fill" data-progress="85%"></span></div>
               </div>
               <div class="skill-item">
                 <div class="skill-info">
                   <strong>Writing &amp; Document</strong>
-                  <span>보도자료 작성 및 문서 사무</span>
+                  <span data-i18n="skill_writing">보도자료 작성 및 문서 사무</span>
                 </div>
                 <div class="skill-bar"><span class="fill" data-progress="95%"></span></div>
               </div>
               <div class="skill-item">
                 <div class="skill-info">
                   <strong>Photography</strong>
-                  <span>DSLR, 필름카메라 기반 기록사진</span>
+                  <span data-i18n="skill_photo">DSLR, 필름카메라 기반 기록사진</span>
                 </div>
                 <div class="skill-bar"><span class="fill" data-progress="90%"></span></div>
               </div>
@@ -127,13 +137,13 @@
               <ul class="history-list">
                 <li>
                   <span class="h-date">2017 - 2021</span>
-                  <strong>동국대학교 WISE캠퍼스</strong>
-                  <p>국어국문학과 / 문화콘텐츠기획전공</p>
+                  <strong data-i18n="edu_1_title">동국대학교 WISE캠퍼스</strong>
+                  <p data-i18n="edu_1_desc">국어국문학과 / 문화콘텐츠기획전공</p>
                 </li>
                 <li>
                   <span class="h-date">2014 - 2016</span>
-                  <strong>부산외국어고등학교</strong>
-                  <p>영중국어과</p>
+                  <strong data-i18n="edu_2_title">부산외국어고등학교</strong>
+                  <p data-i18n="edu_2_desc">영중국어과</p>
                 </li>
               </ul>
             </article>
@@ -143,19 +153,19 @@
               <ul class="history-list">
                 <li>
                   <span class="h-date">2023.06</span>
-                  <strong>2023 무대크루로 일하기 (부산경남편)</strong>
+                  <strong data-i18n="exp_1">2023 무대크루로 일하기 (부산경남편)</strong>
                 </li>
                 <li>
                   <span class="h-date">2023.04 - 2023.08</span>
-                  <strong>부산공연장전문인력양성사업 (공연기획)</strong>
+                  <strong data-i18n="exp_2">부산공연장전문인력양성사업 (공연기획)</strong>
                 </li>
                 <li>
                   <span class="h-date">2022.08 - 2022.11</span>
-                  <strong>인문실험공모전 선정 및 활동</strong>
+                  <strong data-i18n="exp_3">인문실험공모전 선정 및 활동</strong>
                 </li>
                 <li>
                   <span class="h-date">2019.02 - 2021.12</span>
-                  <strong>연극잡지 &lt;파이플&gt; 기획자 및 에디터</strong>
+                  <strong data-i18n="exp_4">연극잡지 &lt;파이플&gt; 기획자 및 에디터</strong>
                 </li>
               </ul>
             </article>
@@ -168,7 +178,7 @@
         <div class="container">
           <div class="section-heading">
             <p class="eyebrow">Projects</p>
-            <h2>예술과 행정을 디자인하는 올라운더</h2>
+            <h2 data-i18n="projects_title">예술과 행정을 디자인하는 올라운더</h2>
           </div>
 
           <div class="career-summary-timeline" aria-label="경력 요약 연표">
@@ -178,11 +188,20 @@
             <div class="summary-item"><span class="s-year">2026</span><span class="s-org">Busan International Film Festival</span></div>
           </div>
 
-          <div class="filter-group" aria-label="프로젝트 카테고리 필터">
-            <button type="button" class="filter-btn active" data-filter="all">All</button>
-            <button type="button" class="filter-btn" data-filter="PR & Marketing">PR & Marketing</button>
-            <button type="button" class="filter-btn" data-filter="Ticket">Ticket</button>
-            <button type="button" class="filter-btn" data-filter="Publishing">Publishing</button>
+          <!-- 프로젝트 컨트롤 바: 필터(왼쪽) & 검색(오른쪽) 위치 전환 -->
+          <div class="project-controls">
+            <div class="filter-group" aria-label="프로젝트 카테고리 필터">
+              <button type="button" class="filter-btn active" data-filter="all">All</button>
+              <button type="button" class="filter-btn" data-filter="PR & Marketing">PR & Marketing</button>
+              <button type="button" class="filter-btn" data-filter="Ticket">Ticket</button>
+              <button type="button" class="filter-btn" data-filter="Publishing">Publishing</button>
+            </div>
+
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="projectSearch" placeholder="프로젝트명, 역할, 키워드 검색..." data-i18n-placeholder="search_placeholder" autocomplete="off" />
+              <button type="button" id="searchClear" class="search-clear hidden" aria-label="검색어 지우기">&times;</button>
+            </div>
           </div>
 
           <ol class="timeline" id="projectList">
@@ -190,8 +209,12 @@
               <span class="year">2023</span>
               <article class="panel project-card">
                 <div class="project-head"><div><h3>Busan Citizens Hall</h3><p class="tags">Ticket · Publishing</p></div><span class="project-type">Venue</span></div>
-                <dl class="project-meta"><div><dt>Role</dt><dd>공연·전시 홍보 콘텐츠</dd></div><div><dt>Scale</dt><dd>지역 문화공간 운영</dd></div><div><dt>Result</dt><dd>공간 인지도와 방문 정보 강화</dd></div></dl>
-                <p class="project-description">공연과 전시의 정보를 관람객 언어로 정리하고, 현장 분위기가 전달되는 홍보 콘텐츠를 기획했습니다.</p>
+                <dl class="project-meta">
+                  <div><dt data-i18n="meta_role">Role</dt><dd data-i18n="p1_role">공연·전시 홍보 콘텐츠</dd></div>
+                  <div><dt data-i18n="meta_scale">Scale</dt><dd data-i18n="p1_scale">지역 문화공간 운영</dd></div>
+                  <div><dt data-i18n="meta_result">Result</dt><dd data-i18n="p1_result">공간 인지도와 방문 정보 강화</dd></div>
+                </dl>
+                <p class="project-description" data-i18n="p1_desc">공연과 전시의 정보를 관람객 언어로 정리하고, 현장 분위기가 전달되는 홍보 콘텐츠를 기획했습니다.</p>
                 <div class="gallery-shell"><button class="gallery-btn prev" type="button" aria-label="이전 이미지">‹</button><div class="gallery-track" tabindex="0" aria-label="Busan Citizens Hall 이미지 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=1" alt="Busan Citizens Hall 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=2" alt="Busan Citizens Hall 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=3" alt="Busan Citizens Hall 작업 이미지 3" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=4" alt="Busan Citizens Hall 작업 이미지 4" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=5" alt="Busan Citizens Hall 작업 이미지 5" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 이미지">›</button></div>
               </article>
             </li>
@@ -200,8 +223,12 @@
               <span class="year">2024</span>
               <article class="panel project-card">
                 <div class="project-head"><div><h3>Busan Biennale 2024</h3><p class="tags">PR &amp; Marketing · Ticket · Publishing</p></div><span class="project-type">Biennale</span></div>
-                <dl class="project-meta"><div><dt>Role</dt><dd>현장 운영 · 관람객 안내</dd></div><div><dt>Scale</dt><dd>국제 현대미술 행사</dd></div><div><dt>Result</dt><dd>관람 동선 안내 안정화</dd></div></dl>
-                <p class="project-description">여러 전시장과 프로그램을 오가는 관람객이 필요한 정보를 빠르게 찾도록 현장 안내와 운영 흐름을 지원했습니다.</p>
+                <dl class="project-meta">
+                  <div><dt data-i18n="meta_role">Role</dt><dd data-i18n="p2_role">현장 운영 · 관람객 안내</dd></div>
+                  <div><dt data-i18n="meta_scale">Scale</dt><dd data-i18n="p2_scale">국제 현대미술 행사</dd></div>
+                  <div><dt data-i18n="meta_result">Result</dt><dd data-i18n="p2_result">관람 동선 안내 안정화</dd></div>
+                </dl>
+                <p class="project-description" data-i18n="p2_desc">여러 전시장과 프로그램을 오가는 관람객이 필요한 정보를 빠르게 찾도록 현장 안내와 운영 흐름을 지원했습니다.</p>
                 <div class="gallery-shell"><button class="gallery-btn prev" type="button" aria-label="이전 이미지">‹</button><div class="gallery-track" tabindex="0" aria-label="Busan Biennale 이미지 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=6" alt="Busan Biennale 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=7" alt="Busan Biennale 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=8" alt="Busan Biennale 작업 이미지 3" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=9" alt="Busan Biennale 작업 이미지 4" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=10" alt="Busan Biennale 작업 이미지 5" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 이미지">›</button></div>
               </article>
             </li>
@@ -210,8 +237,12 @@
               <span class="year">2025</span>
               <article class="panel project-card">
                 <div class="project-head"><div><h3>Sea Art Festival 2025</h3><p class="tags">PR &amp; Marketing · Publishing</p></div><span class="project-type">Festival</span></div>
-                <dl class="project-meta"><div><dt>Role</dt><dd>가이드맵 · 웹사이트 · 홍보물</dd></div><div><dt>Scale</dt><dd>35만 명 규모</dd></div><div><dt>Result</dt><dd>정보 접근성 개선</dd></div></dl>
-                <p class="project-description">흩어진 행사 정보를 가이드맵과 디지털 콘텐츠로 연결해, 관람객이 스스로 동선을 계획할 수 있도록 도왔습니다.</p>
+                <dl class="project-meta">
+                  <div><dt data-i18n="meta_role">Role</dt><dd data-i18n="p3_role">가이드맵 · 웹사이트 · 홍보물</dd></div>
+                  <div><dt data-i18n="meta_scale">Scale</dt><dd data-i18n="p3_scale">35만 명 규모</dd></div>
+                  <div><dt data-i18n="meta_result">Result</dt><dd data-i18n="p3_result">정보 접근성 개선</dd></div>
+                </dl>
+                <p class="project-description" data-i18n="p3_desc">흩어진 행사 정보를 가이드맵과 디지털 콘텐츠로 연결해, 관람객이 스스로 동선을 계획할 수 있도록 도왔습니다.</p>
                 <div class="gallery-shell"><button class="gallery-btn prev" type="button" aria-label="이전 이미지">‹</button><div class="gallery-track" tabindex="0" aria-label="Sea Art Festival 이미지 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=11" alt="Sea Art Festival 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=12" alt="Sea Art Festival 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=13" alt="Sea Art Festival 작업 이미지 3" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=14" alt="Sea Art Festival 작업 이미지 4" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=15" alt="Sea Art Festival 작업 이미지 5" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 이미지">›</button></div>
               </article>
             </li>
@@ -220,49 +251,73 @@
               <span class="year">2026</span>
               <article class="panel project-card">
                 <div class="project-head"><div><h3>Busan International Film Festival</h3><p class="tags">Ticket</p></div><span class="project-type">Film</span></div>
-                <dl class="project-meta"><div><dt>Role</dt><dd>관객 응대 · 현장 운영</dd></div><div><dt>Scale</dt><dd>국제 영화제</dd></div><div><dt>Result</dt><dd>현장 안내 경험 개선</dd></div></dl>
-                <p class="project-description">관객의 질문이 가장 많이 모이는 접점에서 상영과 프로그램 정보를 정확히 전달하고, 현장 흐름을 안정적으로 지원했습니다.</p>
+                <dl class="project-meta">
+                  <div><dt data-i18n="meta_role">Role</dt><dd data-i18n="p4_role">관객 응대 · 현장 운영</dd></div>
+                  <div><dt data-i18n="meta_scale">Scale</dt><dd data-i18n="p4_scale">국제 영화제</dd></div>
+                  <div><dt data-i18n="meta_result">Result</dt><dd data-i18n="p4_result">현장 안내 경험 개선</dd></div>
+                </dl>
+                <p class="project-description" data-i18n="p4_desc">관객의 질문이 가장 많이 모이는 접점에서 상영과 프로그램 정보를 정확히 전달하고, 현장 흐름을 안정적으로 지원했습니다.</p>
                 <div class="gallery-shell"><button class="gallery-btn prev" type="button" aria-label="이전 이미지">‹</button><div class="gallery-track" tabindex="0" aria-label="BIFF 이미지 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=16" alt="BIFF 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=17" alt="BIFF 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=18" alt="BIFF 작업 이미지 3" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=19" alt="BIFF 작업 이미지 4" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=20" alt="BIFF 작업 이미지 5" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 이미지">›</button></div>
               </article>
             </li>
           </ol>
+          <div id="noSearchResults" class="no-results hidden" data-i18n="no_results">검색 결과가 없습니다.</div>
         </div>
       </section>
 
       <section id="practice" class="section section-tint">
-        <div class="container"><div class="section-heading"><p class="eyebrow">Practice</p><h2>직무 밖에서도 이어지는 창작의 태도</h2></div><div class="practice-grid">
-          <article class="panel practice-card"><h3>Photography</h3><p>시간과 공간의 결을 사진으로 기록합니다.</p><p class="connection">전시 현장의 시선과 기록 감각으로 연결됩니다.</p><div class="gallery-shell practice-gallery"><button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button><div class="gallery-track" tabindex="0" aria-label="Photography 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=21" alt="Photography 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=22" alt="Photography 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=23" alt="Photography 작업 이미지 3" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 사진">›</button></div></article>
-          <article class="panel practice-card"><h3>Independent Publishing</h3><p>아이디어를 읽기 쉬운 콘텐츠로 완성합니다.</p><p class="connection">가이드맵과 홍보물 기획 감각으로 연결됩니다.</p><div class="gallery-shell practice-gallery"><button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button><div class="gallery-track" tabindex="0" aria-label="Independent Publishing 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=24" alt="Independent Publishing 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=25" alt="Independent Publishing 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=26" alt="Independent Publishing 작업 이미지 3" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 사진">›</button></div></article>
-          <article class="panel practice-card"><h3>Writing</h3><p>생각과 경험을 짧은 글과 에세이로 남깁니다.</p><p class="connection">관람객에게 정보를 전달하는 언어 감각으로 연결됩니다.</p><div class="gallery-shell practice-gallery"><button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button><div class="gallery-track" tabindex="0" aria-label="Writing 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=27" alt="Writing 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=28" alt="Writing 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=29" alt="Writing 작업 이미지 3" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 사진">›</button></div></article>
+        <div class="container"><div class="section-heading"><p class="eyebrow">Practice</p><h2 data-i18n="practice_title">직무 밖에서도 이어지는 창작의 태도</h2></div><div class="practice-grid">
+          <article class="panel practice-card"><h3>Photography</h3><p data-i18n="prac1_p">시간과 공간의 결을 사진으로 기록합니다.</p><p class="connection" data-i18n="prac1_conn">전시 현장의 시선과 기록 감각으로 연결됩니다.</p><div class="gallery-shell practice-gallery"><button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button><div class="gallery-track" tabindex="0" aria-label="Photography 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=21" alt="Photography 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=22" alt="Photography 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=23" alt="Photography 작업 이미지 3" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 사진">›</button></div></article>
+          <article class="panel practice-card"><h3>Independent Publishing</h3><p data-i18n="prac2_p">아이디어를 읽기 쉬운 콘텐츠로 완성합니다.</p><p class="connection" data-i18n="prac2_conn">가이드맵과 홍보물 기획 감각으로 연결됩니다.</p><div class="gallery-shell practice-gallery"><button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button><div class="gallery-track" tabindex="0" aria-label="Independent Publishing 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=24" alt="Independent Publishing 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=25" alt="Independent Publishing 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=26" alt="Independent Publishing 작업 이미지 3" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 사진">›</button></div></article>
+          <article class="panel practice-card"><h3>Writing</h3><p data-i18n="prac3_p">생각과 경험을 짧은 글과 에세이로 남깁니다.</p><p class="connection" data-i18n="prac3_conn">관람객에게 정보를 전달하는 언어 감각으로 연결됩니다.</p><div class="gallery-shell practice-gallery"><button class="gallery-btn prev" type="button" aria-label="이전 사진">‹</button><div class="gallery-track" tabindex="0" aria-label="Writing 갤러리"><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=27" alt="Writing 작업 이미지 1" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=28" alt="Writing 작업 이미지 2" /></button><button class="gallery-image" type="button"><img src="https://picsum.photos/600/400?random=29" alt="Writing 작업 이미지 3" /></button></div><button class="gallery-btn next" type="button" aria-label="다음 사진">›</button></div></article>
         </div></div>
       </section>
 
       <section id="ongoing" class="section">
-        <div class="container"><div class="section-heading"><p class="eyebrow">Ongoing</p><h2>지금도 차분히 쌓아가는 과정</h2></div><div class="ongoing-list"><article class="panel progress-card"><div class="progress-head"><h3>See Yoon Soon Website</h3><strong>70%</strong></div><p>Personal portfolio and archive system</p><div class="progress" role="progressbar" aria-label="See Yoon Soon Website 진행률" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span style="width:70%"></span></div></article><article class="panel progress-card"><div class="progress-head"><h3>OPIc IH Project</h3><strong>45%</strong></div><p>Language practice and interview preparation</p><div class="progress" role="progressbar" aria-label="OPIc IH Project 진행률" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><span style="width:45%"></span></div></article><article class="panel progress-card"><div class="progress-head"><h3>Culture Archive Tracking</h3><strong>30%</strong></div><p>Field notes, references, and cultural records</p><div class="progress" role="progressbar" aria-label="Culture Archive Tracking 진행률" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><span style="width:30%"></span></div></article></div></div>
+        <div class="container"><div class="section-heading"><p class="eyebrow">Ongoing</p><h2 data-i18n="ongoing_title">지금도 차분히 쌓아가는 과정</h2></div><div class="ongoing-list"><article class="panel progress-card"><div class="progress-head"><h3>See Yoon Soon Website</h3><strong>70%</strong></div><p>Personal portfolio and archive system</p><div class="progress" role="progressbar" aria-label="See Yoon Soon Website 진행률" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><span style="width:70%"></span></div></article><article class="panel progress-card"><div class="progress-head"><h3>OPIc IH Project</h3><strong>45%</strong></div><p>Language practice and interview preparation</p><div class="progress" role="progressbar" aria-label="OPIc IH Project 진행률" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><span style="width:45%"></span></div></article><article class="panel progress-card"><div class="progress-head"><h3>Culture Archive Tracking</h3><strong>30%</strong></div><p>Field notes, references, and cultural records</p><div class="progress" role="progressbar" aria-label="Culture Archive Tracking 진행률" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"><span style="width:30%"></span></div></article></div></div>
       </section>
 
       <section id="archive" class="section section-tint">
-        <div class="container"><div class="section-heading"><p class="eyebrow">Archive</p><h2>필요한 자료를 한곳에 정리했습니다.</h2></div><div class="archive-grid"><a class="panel archive-card" href="javascript:void(0)" onclick="alert('준비 중입니다.')"><span class="archive-icon">▣</span><h3>Portfolio PDF</h3><p>주요 프로젝트와 역할을 한눈에 보는 포트폴리오.</p><span>Download PDF →</span></a><a class="panel archive-card" href="javascript:void(0)" onclick="alert('준비 중입니다.')"><span class="archive-icon">⌂</span><h3>CV / Resume</h3><p>경력, 역량, 협업 경험을 담은 이력 자료.</p><span>Download PDF →</span></a><a class="panel archive-card" href="#projects"><span class="archive-icon">⌁</span><h3>Sea Art Festival Guide Map</h3><p>관람객 정보 경험을 설계한 가이드맵 아카이브.</p><span>View project →</span></a><a class="panel archive-card" href="#projects"><span class="archive-icon">▤</span><h3>Website &amp; Content Archive</h3><p>웹사이트와 홍보 콘텐츠의 기록을 모았습니다.</p><span>View archive →</span></a></div></div>
+        <div class="container"><div class="section-heading"><p class="eyebrow">Archive</p><h2 data-i18n="archive_title">필요한 자료를 한곳에 정리했습니다.</h2></div><div class="archive-grid"><a class="panel archive-card" href="javascript:void(0)" onclick="alert('준비 중입니다.')"><span class="archive-icon">▣</span><h3>Portfolio PDF</h3><p data-i18n="arc_1_p">주요 프로젝트와 역할을 한눈에 보는 포트폴리오.</p><span>Download PDF →</span></a><a class="panel archive-card" href="javascript:void(0)" onclick="alert('준비 중입니다.')"><span class="archive-icon">⌂</span><h3>CV / Resume</h3><p data-i18n="arc_2_p">경력, 역량, 협업 경험을 담은 이력 자료.</p><span>Download PDF →</span></a><a class="panel archive-card" href="#projects"><span class="archive-icon">⌁</span><h3>Sea Art Festival Guide Map</h3><p data-i18n="arc_3_p">관람객 정보 경험을 설계한 가이드맵 아카이브.</p><span>View project →</span></a><a class="panel archive-card" href="#projects"><span class="archive-icon">▤</span><h3>Website &amp; Content Archive</h3><p data-i18n="arc_4_p">웹사이트와 홍보 콘텐츠의 기록을 모았습니다.</p><span>View archive →</span></a></div></div>
       </section>
 
       <section id="contact" class="section contact-section">
-        <div class="container"><div class="section-heading"><p class="eyebrow">Contact</p><h2>함께 더 오래 기억될 경험을 만들어요.</h2></div><div class="contact-card panel"><p>문화예술 프로젝트, 전시·영화제 운영, 홍보 콘텐츠 제작, 아카이브 및 기록 기반의 협업을 환영합니다.</p><a class="btn primary" href="mailto:siyoon@example.com">Send Email</a><div class="contact-links"><a href="mailto:siyoon@example.com">✉ Email</a><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">◎ Instagram</a><a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0" target="_blank" rel="noopener noreferrer">▤ Blog / Notion</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">in LinkedIn</a></div></div></div>
+        <div class="container"><div class="section-heading"><p class="eyebrow">Contact</p><h2 data-i18n="contact_title">함께 더 오래 기억될 경험을 만들어요.</h2></div><div class="contact-card panel"><p data-i18n="contact_p">문화예술 프로젝트, 전시·영화제 운영, 홍보 콘텐츠 제작, 아카이브 및 기록 기반의 협업을 환영합니다.</p><a class="btn primary" href="mailto:siyoon@example.com" data-i18n="contact_btn">Send Email</a><div class="contact-links"><a href="mailto:siyoon@example.com">✉ Email</a><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">◎ Instagram</a><a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0" target="_blank" rel="noopener noreferrer">▤ Blog / Notion</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">in LinkedIn</a></div></div></div>
       </section>
     </main>
 
-    <footer class="keyword-index-section" aria-label="Portfolio keywords">
+    <footer class="keyword-index-section" id="footerTicker" aria-label="Portfolio keywords">
       <div class="ticker-viewport"><div class="marquee-track"><div class="marquee-group"><span>#Photography</span><span>#Independent Publishing</span><span>#Writing</span><span>#BIFF</span><span>#SAF2025</span><span>#BSCC</span><span>#BB2024</span><span>#PR&amp;Marketing</span><span>#Operation</span><span>#Culture</span><span>#Archive</span><span>#Communication</span></div><div class="marquee-group" aria-hidden="true"><span>#Photography</span><span>#Independent Publishing</span><span>#Writing</span><span>#BIFF</span><span>#SAF2025</span><span>#BSCC</span><span>#BB2024</span><span>#PR&amp;Marketing</span><span>#Operation</span><span>#Culture</span><span>#Archive</span><span>#Communication</span></div></div></div>
     </footer>
     
-    <div class="floating-actions">
-      <button class="scroll-top" id="scrollTop" type="button" aria-label="맨 위로 이동">↑</button>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="테마 전환">
-        <span class="theme-icon">☀️</span>
+    <!-- 모바일 전용 접기/펼치기 통합 플로팅 액션 바 -->
+    <div class="floating-actions" id="floatingActions">
+      <!-- 모바일 화면 전용 메인 토글 버튼 -->
+      <button class="fab-main-toggle" id="fabMainToggle" type="button" aria-label="메뉴 열기">
+        <span class="fab-icon">+</span>
       </button>
-      <button id="chat-toggle-btn" type="button" aria-label="소통창구 열기">💬</button>
+
+      <!-- 플로팅 버튼 그룹 -->
+      <div class="fab-menu-group" id="fabMenuGroup">
+        <!-- 1. 맨 위로 이동 (Top) -->
+        <button class="scroll-top" id="scrollTop" type="button" aria-label="맨 위로 이동">↑</button>
+        
+        <!-- 2. 한/영 전환 버튼 (Lang) -->
+        <button class="lang-toggle-btn" id="langToggle" type="button" aria-label="언어 전환">
+          <span class="lang-text" id="langBtnText">EN</span>
+        </button>
+
+        <!-- 3. 다크모드 전환 (Theme) -->
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="테마 전환">
+          <span class="theme-icon">☀️</span>
+        </button>
+
+        <!-- 4. 소통창구 열기 (Chat) -->
+        <button id="chat-toggle-btn" type="button" aria-label="소통창구 열기">💬</button>
+      </div>
     </div>
 
-    <div class="chat-container">
+    <div class="chat-container" id="chatContainer">
       <div id="chat-window" class="chat-window hidden">
         <div class="chat-header">
           <span>Yoon과 소통하기</span>

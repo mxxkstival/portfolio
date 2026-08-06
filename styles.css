@@ -45,6 +45,7 @@ button, a { touch-action: manipulation; }
 .topbar { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 .nav-wrap { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { font-size: .88rem; font-weight: 700; letter-spacing: .14em; }
+
 .nav-links { display: flex; align-items: center; gap: 4px; }
 .nav-links a { position: relative; padding: 8px 11px 12px; border-radius: 6px; font-size: .82rem; font-weight: 600; color: var(--muted); transition: color .2s ease, background .2s ease; }
 .nav-links a:hover { background: var(--surface-soft); color: var(--ink); }
@@ -230,11 +231,61 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   line-height: 1.35;
 }
 
-/* Category Filter */
+/* Project Controls (Search & Filter) */
+.project-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 240px;
+  max-width: 360px;
+}
+.search-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  pointer-events: none;
+}
+#projectSearch {
+  width: 100%;
+  padding: 8px 32px 8px 34px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+#projectSearch:focus {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 10%, transparent);
+}
+.search-clear {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+.search-clear.hidden { display: none; }
+
 .filter-group {
   display: flex;
   gap: 8px;
-  margin-bottom: 28px;
   flex-wrap: wrap;
 }
 .filter-btn {
@@ -253,6 +304,14 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   color: var(--paper);
   border-color: var(--ink);
 }
+
+.no-results {
+  text-align: center;
+  padding: 48px 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.no-results.hidden { display: none; }
 
 /* Timeline Section */
 .timeline { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; }
@@ -324,7 +383,7 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
 .lightbox-dialog img { display: block; width: 100%; max-height: 82vh; object-fit: contain; }
 .lightbox-close { position: absolute; top: 18px; right: 18px; width: 34px; height: 34px; border: 0; border-radius: 50%; background: rgba(0,0,0,.65); color: white; font-size: 1.3rem; cursor: pointer; }
 
-/* Floating Actions */
+/* Floating Actions Base Styles */
 .floating-actions {
   position: fixed;
   right: 24px;
@@ -332,9 +391,45 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   z-index: 1000;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  transition: bottom 0.1s ease-out;
+}
+
+/* PC 화면에서는 + 토글 버튼을 확실히 숨김 처리 */
+.fab-main-toggle {
+  display: none !important;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.fab-icon {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+/* PC 화면에서는 4개 버튼을 수직으로 상시 보임 */
+.fab-menu-group {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   align-items: center;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
 }
+
 .floating-actions button {
   width: 44px;
   height: 44px;
@@ -351,6 +446,12 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 .floating-actions button:hover { transform: scale(1.08); }
+.lang-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--paper);
+}
 .theme-icon { font-size: 16px; line-height: 1; }
 
 /* Chat Window & Widget */
@@ -360,6 +461,7 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   right: 24px;
   z-index: 1001;
   font-family: inherit;
+  transition: bottom 0.1s ease-out;
 }
 .chat-window {
   position: absolute;
@@ -503,6 +605,8 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   .timeline-item { grid-template-columns: 1fr; }
   .year { padding: 0; }
   .career-summary-timeline { grid-template-columns: repeat(2, 1fr); gap: 14px 18px; padding: 16px; }
+  .project-controls { flex-direction: column; align-items: stretch; }
+  .search-box { max-width: 100%; }
   .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -555,6 +659,7 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   .section { padding: 68px 0; }
 }
 
+/* 모바일 규격 (600px 이하) - 접기/펼치기 통합 버튼 활성화 */
 @media(max-width: 600px) {
   .container { width: min(100% - 32px, 1120px); }
   body { font-size: 14px; }
@@ -580,14 +685,43 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   .summary-item .s-org { font-size: 0.8rem; }
 
   .floating-actions { right: 16px; bottom: 16px; }
+
+  /* 모바일에서만 + 버튼 활성화 */
+  .fab-main-toggle {
+    display: flex !important;
+  }
+
+  /* 모바일에서만 서브 버튼 그룹을 기본적으로 숨김 */
+  .fab-menu-group {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(15px) scale(0.9) !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    margin-bottom: 10px;
+    order: -1;
+  }
+
+  /* 모바일 토글 클릭 시 서브 버튼 펼침 */
+  .floating-actions.active .fab-menu-group {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  .floating-actions.active .fab-icon {
+    transform: rotate(45deg);
+  }
+
   .chat-container { right: 0; bottom: 0; }
   .chat-window {
     position: fixed;
     right: 12px;
     bottom: 70px;
     width: calc(100vw - 24px);
-    height: 75vh;
-    max-height: 500px;
+    height: 70vh;
+    max-height: 480px;
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
   }
