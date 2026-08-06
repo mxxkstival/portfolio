@@ -27,7 +27,7 @@
     <!-- 폰트 및 스타일시트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nanum+Myeongjo:wght@400;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
 
     <!-- External Library: Supabase CDN -->
@@ -54,29 +54,60 @@
     </header>
 
     <main>
+      <!-- HTML/CSS 레이어 방식의 아카이브 폴더 아트워크 Hero Section -->
       <section id="hero" class="hero section">
-        <div class="container hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow" data-i18n="hero_eyebrow">Personal Archive</p>
-            <h1>See Yoon Soon</h1>
-            <p class="hero-slogan" data-i18n="hero_slogan">보고, 기록하고, 연결하는 문화예술 아카이브</p>
-            <p class="lead" data-i18n="hero_lead">전시와 영화제의 현장에서 사람과 콘텐츠가 만나는 순간을 기록합니다. 관람객이 더 쉽게 이해하고 더 오래 기억할 수 있도록 홍보, 운영, 아카이브의 접점을 설계하는 일에 관심이 있습니다.</p>
-            <div class="tag-list" aria-label="전문 분야"><span>#PR&amp;Marketing</span><span>#Operation</span><span>#Culture</span><span>#Archive</span></div>
-            <div class="cta-row">
-              <a class="btn primary" href="#projects" data-i18n="hero_btn_projects">View Projects</a>
-              <a class="btn secondary" href="#archive" data-i18n="hero_btn_portfolio">Download Portfolio</a>
+        <div class="container hero-graphic-stage">
+          <!-- 상단 헤더 연도 -->
+          <div class="stage-header-year">2026</div>
+
+          <!-- 입체 아카이브 폴더 모티프 스테이지 -->
+          <div class="folder-artwork-wrapper">
+            <div class="folder-grid-bg"></div>
+
+            <!-- 스티커 & 키워드 탭 -->
+            <div class="folder-floating-elements">
+              <span class="sticker-emoji emoji-fire">🔥</span>
+              <span class="sticker-emoji emoji-smile">🙂</span>
+              
+              <span class="tag-label-sticker sticker-1">열정</span>
+              <span class="tag-label-sticker sticker-2">도전</span>
+              <span class="tag-label-sticker sticker-3">긍정</span>
+
+              <a href="#projects" class="folder-tab-badge tab-pr"><span>PR &amp; Marketing</span></a>
+              <a href="#projects" class="folder-tab-badge tab-op"><span>Operation</span></a>
+              <a href="#projects" class="folder-tab-badge tab-cu"><span>Culture</span></a>
+              <a href="#projects" class="folder-tab-badge tab-ar"><span>Archive</span></a>
+            </div>
+
+            <!-- HTML/CSS 기반 실물 탭 폴더 객체 (깨짐 원천 방지) -->
+            <div class="css-folder-object">
+              <!-- 뒷 폴더 레이어 -->
+              <div class="folder-layer-back">
+                <div class="folder-tab-top-back"></div>
+                <div class="folder-body-back"></div>
+              </div>
+              <!-- 앞 폴더 레이어 -->
+              <div class="folder-layer-front">
+                <div class="folder-tab-top-front"></div>
+                <div class="folder-body-front">
+                  <div class="folder-center-badge">
+                    <p class="folder-slogan-text" data-i18n="hero_slogan">보고, 기록하고, 연결하는 문화예술 아카이브</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <aside class="memo-card" aria-label="현재 작업 메모">
-            <div class="memo-header"><span>Today’s Sticker</span><span aria-hidden="true">●</span></div>
-            <p class="memo-sticker" id="stickerDisplay">observing &amp; organizing</p>
-            <div class="memo-rule"></div>
-            <p class="memo-label">CURRENT INTEREST</p>
-            <ul class="memo-interest"><li>Photography as field notes</li><li>Independent publishing</li><li>Film &amp; exhibition archives</li></ul>
-            <dl class="memo-status"><div><dt>Last updated</dt><dd>2026.08</dd></div><div><dt>Currently building</dt><dd>A cultural archive in progress</dd></div></dl>
-          </aside>
+
+          <!-- 하단 메인 브랜드 타이틀 -->
+          <div class="stage-footer-wrap">
+            <h1 class="stage-footer-title">SEE YOON SOON</h1>
+          </div>
         </div>
-        <a class="scroll-cue" href="#about" aria-label="About 섹션으로 이동"><span data-i18n="hero_scroll">Scroll to explore</span><i aria-hidden="true"></i></a>
+
+        <a class="scroll-cue" href="#about" aria-label="About 섹션으로 이동">
+          <span data-i18n="hero_scroll">Scroll to explore</span>
+          <i aria-hidden="true"></i>
+        </a>
       </section>
 
       <section id="about" class="section section-tint">
@@ -188,7 +219,6 @@
             <div class="summary-item"><span class="s-year">2026</span><span class="s-org">Busan International Film Festival</span></div>
           </div>
 
-          <!-- 프로젝트 컨트롤 바: 필터(왼쪽) & 검색(오른쪽) 위치 전환 -->
           <div class="project-controls">
             <div class="filter-group" aria-label="프로젝트 카테고리 필터">
               <button type="button" class="filter-btn active" data-filter="all">All</button>
@@ -292,27 +322,18 @@
     
     <!-- 모바일 전용 접기/펼치기 통합 플로팅 액션 바 -->
     <div class="floating-actions" id="floatingActions">
-      <!-- 모바일 화면 전용 메인 토글 버튼 -->
       <button class="fab-main-toggle" id="fabMainToggle" type="button" aria-label="메뉴 열기">
         <span class="fab-icon">+</span>
       </button>
 
-      <!-- 플로팅 버튼 그룹 -->
       <div class="fab-menu-group" id="fabMenuGroup">
-        <!-- 1. 맨 위로 이동 (Top) -->
         <button class="scroll-top" id="scrollTop" type="button" aria-label="맨 위로 이동">↑</button>
-        
-        <!-- 2. 한/영 전환 버튼 (Lang) -->
         <button class="lang-toggle-btn" id="langToggle" type="button" aria-label="언어 전환">
           <span class="lang-text" id="langBtnText">EN</span>
         </button>
-
-        <!-- 3. 다크모드 전환 (Theme) -->
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="테마 전환">
           <span class="theme-icon">☀️</span>
         </button>
-
-        <!-- 4. 소통창구 열기 (Chat) -->
         <button id="chat-toggle-btn" type="button" aria-label="소통창구 열기">💬</button>
       </div>
     </div>
