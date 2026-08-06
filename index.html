@@ -7,29 +7,32 @@
     <title>See Yoon Soon | Personal Archive</title>
 
     <!-- 파비콘(Favicon) 설정 -->
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
-    <!-- PNG 포맷을 사용할 경우 위 태그 대신 아래 태그를 사용하세요: -->
-    <!-- <link rel="icon" href="./favicon.png" type="image/png" /> -->
+    <link rel="icon" href="./favicon.ico" sizes="any" />
+    <link rel="icon" href="./favicon.png" type="image/png" />
 
-    <!-- 오픈그래프 (Open Graph / 메신저 공유 미리보기) -->
+    <!-- 오픈그래프 (Open Graph) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="See Yoon Soon" />
     <meta property="og:title" content="See Yoon Soon | Personal Archive" />
     <meta property="og:description" content="See Yoon Soon — 문화예술 현장에서 사람과 콘텐츠를 연결하는 개인 아카이브" />
-    <meta property="og:image" content="https://mxxkstival.github.io/portfolio/og-image.png" />
-    <meta property="og:url" content="https://mxxkstival.github.io/portfolio/" />
+    <!-- Vercel 배포 주소에 맞게 변경해주세요 -->
+    <meta property="og:image" content="./og-image.png" />
+    <meta property="og:url" content="https://your-vercel-domain.vercel.app/" />
 
     <!-- 트위터 카드 (X / 트위터 미리보기) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="See Yoon Soon | Personal Archive" />
     <meta name="twitter:description" content="See Yoon Soon — 문화예술 현장에서 사람과 콘텐츠를 연결하는 개인 아카이브" />
-    <meta name="twitter:image" content="https://mxxkstival.github.io/portfolio/og-image.png" />
+    <meta name="twitter:image" content="./og-image.png" />
 
     <!-- 폰트 및 스타일시트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+
+    <!-- External Library: Supabase CDN (script.js보다 상단 배치) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   </head>
   <body>
     <header class="topbar">
@@ -240,11 +243,11 @@
       </section>
 
       <section id="archive" class="section section-tint">
-        <div class="container"><div class="section-heading"><p class="eyebrow">Archive</p><h2>필요한 자료를 한곳에 정리했습니다.</h2></div><div class="archive-grid"><a class="panel archive-card" href="#" download><span class="archive-icon">▣</span><h3>Portfolio PDF</h3><p>주요 프로젝트와 역할을 한눈에 보는 포트폴리오.</p><span>Download PDF →</span></a><a class="panel archive-card" href="#" download><span class="archive-icon">⌂</span><h3>CV / Resume</h3><p>경력, 역량, 협업 경험을 담은 이력 자료.</p><span>Download PDF →</span></a><a class="panel archive-card" href="#projects"><span class="archive-icon">⌁</span><h3>Sea Art Festival Guide Map</h3><p>관람객 정보 경험을 설계한 가이드맵 아카이브.</p><span>View project →</span></a><a class="panel archive-card" href="#projects"><span class="archive-icon">▤</span><h3>Website &amp; Content Archive</h3><p>웹사이트와 홍보 콘텐츠의 기록을 모았습니다.</p><span>View archive →</span></a></div></div>
+        <div class="container"><div class="section-heading"><p class="eyebrow">Archive</p><h2>필요한 자료를 한곳에 정리했습니다.</h2></div><div class="archive-grid"><a class="panel archive-card" href="javascript:void(0)" onclick="alert('준비 중입니다.')"><span class="archive-icon">▣</span><h3>Portfolio PDF</h3><p>주요 프로젝트와 역할을 한눈에 보는 포트폴리오.</p><span>Download PDF →</span></a><a class="panel archive-card" href="javascript:void(0)" onclick="alert('준비 중입니다.')"><span class="archive-icon">⌂</span><h3>CV / Resume</h3><p>경력, 역량, 협업 경험을 담은 이력 자료.</p><span>Download PDF →</span></a><a class="panel archive-card" href="#projects"><span class="archive-icon">⌁</span><h3>Sea Art Festival Guide Map</h3><p>관람객 정보 경험을 설계한 가이드맵 아카이브.</p><span>View project →</span></a><a class="panel archive-card" href="#projects"><span class="archive-icon">▤</span><h3>Website &amp; Content Archive</h3><p>웹사이트와 홍보 콘텐츠의 기록을 모았습니다.</p><span>View archive →</span></a></div></div>
       </section>
 
       <section id="contact" class="section contact-section">
-        <div class="container"><div class="section-heading"><p class="eyebrow">Contact</p><h2>함께 더 오래 기억될 경험을 만들어요.</h2></div><div class="contact-card panel"><p>문화예술 프로젝트, 전시·영화제 운영, 홍보 콘텐츠 제작, 아카이브 및 기록 기반의 협업을 환영합니다.</p><a class="btn primary" href="mailto:siyoon@example.com">Send Email</a><div class="contact-links"><a href="mailto:siyoon@example.com">✉ Email</a><a href="#" target="_blank" rel="noopener noreferrer">◎ Instagram</a><a href="#" target="_blank" rel="noopener noreferrer">▤ Blog / Notion</a><a href="#" target="_blank" rel="noopener noreferrer">in LinkedIn</a></div></div></div>
+        <div class="container"><div class="section-heading"><p class="eyebrow">Contact</p><h2>함께 더 오래 기억될 경험을 만들어요.</h2></div><div class="contact-card panel"><p>문화예술 프로젝트, 전시·영화제 운영, 홍보 콘텐츠 제작, 아카이브 및 기록 기반의 협업을 환영합니다.</p><a class="btn primary" href="mailto:siyoon@example.com">Send Email</a><div class="contact-links"><a href="mailto:siyoon@example.com">✉ Email</a><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">◎ Instagram</a><a href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0" target="_blank" rel="noopener noreferrer">▤ Blog / Notion</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">in LinkedIn</a></div></div></div>
       </section>
     </main>
 
@@ -287,120 +290,5 @@
     <div class="lightbox-modal" id="lightboxModal" aria-hidden="true"><div class="lightbox-backdrop"></div><div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="이미지 확대 보기"><button class="lightbox-close" id="lightboxClose" type="button" aria-label="닫기">×</button><img id="lightboxImage" src="" alt="" /></div></div>
 
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-      const SUPABASE_URL = 'https://kzsjeisbzznqpmeagzii.supabase.co';
-      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6c2plaXNienpucXBtZWFnemlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4OTcyNzIsImV4cCI6MjEwMTQ3MzI3Mn0.Igy1BAnZ1zuWre2vFSVVhSSuZe0-RUY_YtQQKgO1X8Y';
-
-      const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-      document.addEventListener('DOMContentLoaded', () => {
-        const toggleBtn = document.getElementById('chat-toggle-btn');
-        const closeBtn = document.getElementById('chat-close-btn');
-        const chatWindow = document.getElementById('chat-window');
-        const chatBody = document.getElementById('chat-body');
-        const chatForm = document.getElementById('chat-form');
-        const chatInput = document.getElementById('chat-input');
-        const chatContact = document.getElementById('chat-contact');
-        const faqContainer = document.getElementById('faq-buttons');
-
-        let cachedFaqs = [];
-
-        toggleBtn?.addEventListener('click', () => chatWindow?.classList.toggle('hidden'));
-        closeBtn?.addEventListener('click', () => chatWindow?.classList.add('hidden'));
-
-        function appendMessage(text, sender) {
-          const msgDiv = document.createElement('div');
-          msgDiv.classList.add('message', `${sender}-message`);
-          msgDiv.textContent = text;
-          chatBody?.appendChild(msgDiv);
-          if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
-        }
-
-        function renderFaqButtons(targetContainer, faqs) {
-          targetContainer.innerHTML = '';
-          faqs.forEach(faq => {
-            const btn = document.createElement('button');
-            btn.classList.add('faq-btn');
-            btn.type = 'button';
-            btn.textContent = faq.question;
-            btn.addEventListener('click', () => handleFaqClick(faq));
-            targetContainer.appendChild(btn);
-          });
-        }
-
-        function handleFaqClick(faq) {
-          appendMessage(faq.question, 'user');
-          setTimeout(() => {
-            appendMessage(faq.answer, 'bot');
-            setTimeout(() => {
-              appendMessage("추가로 궁금하신 사항이 있으신가요?", "bot");
-              if (cachedFaqs.length > 0) {
-                const newFaqBox = document.createElement('div');
-                newFaqBox.classList.add('faq-buttons');
-                renderFaqButtons(newFaqBox, cachedFaqs);
-                chatBody?.appendChild(newFaqBox);
-                if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
-              }
-            }, 400);
-          }, 300);
-        }
-
-        async function loadFaqs() {
-          try {
-            const { data: faqs, error } = await _supabase
-              .from('faqs')
-              .select('question, answer')
-              .order('display_order', { ascending: true });
-
-            if (error) throw error;
-            cachedFaqs = faqs || [];
-            if (faqContainer) renderFaqButtons(faqContainer, cachedFaqs);
-          } catch (err) {
-            console.error('FAQ 로드 에러:', err.message);
-          }
-        }
-
-        async function handleUserSubmit(e) {
-          e.preventDefault();
-          const userMsg = chatInput?.value.trim();
-          const contactMsg = chatContact?.value.trim() || '미입력';
-
-          if (!userMsg) return;
-
-          appendMessage(userMsg, 'user');
-          if (chatInput) chatInput.value = '';
-
-          try {
-            const { error } = await _supabase
-              .from('messages')
-              .insert([{ user_message: userMsg, contact_info: contactMsg }]);
-
-            if (error) throw error;
-
-            setTimeout(() => {
-              appendMessage("메시지가 정상적으로 전달되었습니다! 확인 후 답변드리겠습니다.", "bot");
-              setTimeout(() => {
-                appendMessage("추가로 궁금하신 사항이 있으신가요?", "bot");
-                if (cachedFaqs.length > 0) {
-                  const newFaqBox = document.createElement('div');
-                  newFaqBox.classList.add('faq-buttons');
-                  renderFaqButtons(newFaqBox, cachedFaqs);
-                  chatBody?.appendChild(newFaqBox);
-                  if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
-                }
-              }, 400);
-            }, 500);
-
-          } catch (err) {
-            console.error('메시지 전송 에러:', err.message);
-            appendMessage("죄송합니다. 메시지 전송 중 오류가 발생했습니다.", "bot");
-          }
-        }
-
-        chatForm?.addEventListener('submit', handleUserSubmit);
-        loadFaqs();
-      });
-    </script>
   </body>
 </html>

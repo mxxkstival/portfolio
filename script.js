@@ -5,6 +5,17 @@ const themeButton = document.getElementById('themeToggle');
 const themeIcon = themeButton?.querySelector('.theme-icon');
 const topButton = document.getElementById('scrollTop');
 
+// Supabase 글로벌 객체 확인 및 안전한 초기화
+const SUPABASE_URL = 'https://kzsjeisbzznqpmeagzii.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt6c2plaXNienpucXBtZWFnemlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU4OTcyNzIsImV4cCI6MjEwMTQ3MzI3Mn0.Igy1BAnZ1zuWre2vFSVVhSSuZe0-RUY_YtQQKgO1X8Y';
+
+let _supabase = null;
+if (typeof supabase !== 'undefined') {
+  _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+} else {
+  console.warn('Supabase 라이브러리가 로드되지 않았습니다.');
+}
+
 // 모바일 햄버거 메뉴 토글
 menuButton?.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
@@ -100,7 +111,125 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // Chatbot Initialization
+  initChatbot();
 });
+
+// Chatbot 기능 핸들러
+function initChatbot() {
+  const toggleBtn = document.getElementById('chat-toggle-btn');
+  const closeBtn = document.getElementById('chat-close-btn');
+  const chatWindow = document.getElementById('chat-window');
+  const chatBody = document.getElementById('chat-body');
+  const chatForm = document.getElementById('chat-form');
+  const chatInput = document.getElementById('chat-input');
+  const chatContact = document.getElementById('chat-contact');
+  const faqContainer = document.getElementById('faq-buttons');
+
+  let cachedFaqs = [];
+
+  toggleBtn?.addEventListener('click', () => chatWindow?.classList.toggle('hidden'));
+  closeBtn?.addEventListener('click', () => chatWindow?.classList.add('hidden'));
+
+  function appendMessage(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', `${sender}-message`);
+    msgDiv.textContent = text;
+    chatBody?.appendChild(msgDiv);
+    if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  function renderFaqButtons(targetContainer, faqs) {
+    targetContainer.innerHTML = '';
+    faqs.forEach(faq => {
+      const btn = document.createElement('button');
+      btn.classList.add('faq-btn');
+      btn.type = 'button';
+      btn.textContent = faq.question;
+      btn.addEventListener('click', () => handleFaqClick(faq));
+      targetContainer.appendChild(btn);
+    });
+  }
+
+  function handleFaqClick(faq) {
+    appendMessage(faq.question, 'user');
+    setTimeout(() => {
+      appendMessage(faq.answer, 'bot');
+      setTimeout(() => {
+        appendMessage("추가로 궁금하신 사항이 있으신가요?", "bot");
+        if (cachedFaqs.length > 0) {
+          const newFaqBox = document.createElement('div');
+          newFaqBox.classList.add('faq-buttons');
+          renderFaqButtons(newFaqBox, cachedFaqs);
+          chatBody?.appendChild(newFaqBox);
+          if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
+        }
+      }, 400);
+    }, 300);
+  }
+
+  async function loadFaqs() {
+    if (!_supabase) return;
+    try {
+      const { data: faqs, error } = await _supabase
+        .from('faqs')
+        .select('question, answer')
+        .order('display_order', { ascending: true });
+
+      if (error) throw error;
+      cachedFaqs = faqs || [];
+      if (faqContainer) renderFaqButtons(faqContainer, cachedFaqs);
+    } catch (err) {
+      console.error('FAQ 로드 에러:', err.message);
+    }
+  }
+
+  async function handleUserSubmit(e) {
+    e.preventDefault();
+    const userMsg = chatInput?.value.trim();
+    const contactMsg = chatContact?.value.trim() || '미입력';
+
+    if (!userMsg) return;
+
+    appendMessage(userMsg, 'user');
+    if (chatInput) chatInput.value = '';
+
+    if (!_supabase) {
+      appendMessage("현재 데이터베이스에 연결할 수 없습니다.", "bot");
+      return;
+    }
+
+    try {
+      const { error } = await _supabase
+        .from('messages')
+        .insert([{ user_message: userMsg, contact_info: contactMsg }]);
+
+      if (error) throw error;
+
+      setTimeout(() => {
+        appendMessage("메시지가 정상적으로 전달되었습니다! 확인 후 답변드리겠습니다.", "bot");
+        setTimeout(() => {
+          appendMessage("추가로 궁금하신 사항이 있으신가요?", "bot");
+          if (cachedFaqs.length > 0) {
+            const newFaqBox = document.createElement('div');
+            newFaqBox.classList.add('faq-buttons');
+            renderFaqButtons(newFaqBox, cachedFaqs);
+            chatBody?.appendChild(newFaqBox);
+            if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
+          }
+        }, 400);
+      }, 500);
+
+    } catch (err) {
+      console.error('메시지 전송 에러:', err.message);
+      appendMessage("죄송합니다. 메시지 전송 중 오류가 발생했습니다.", "bot");
+    }
+  }
+
+  chatForm?.addEventListener('submit', handleUserSubmit);
+  loadFaqs();
+}
 
 // IntersectionObserver를 이용한 스크롤 감지
 if ('IntersectionObserver' in window) {
@@ -187,7 +316,9 @@ document.querySelectorAll('.gallery-shell').forEach(shell => {
         timer = setTimeout(correct, 90);
       }, { passive: true });
 
-      track.addEventListener('scrollend', correct);
+      if ('onscrollend' in window) {
+        track.addEventListener('scrollend', correct);
+      }
     }
 
     const moveProjects = direction => {

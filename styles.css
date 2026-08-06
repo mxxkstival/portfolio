@@ -101,7 +101,7 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
 .interest-list { margin-top: 14px; }
 .interest-list span { font-size: .72rem; }
 
-/* About - Core Skill (게이지 바) & Education / Experience 스타일 */
+/* About - Core Skill & History */
 .sub-title {
   font-family: inherit;
   font-size: 1.04rem;
@@ -199,7 +199,7 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   margin: 2px 0 0;
 }
 
-/* Career Summary Timeline (반응형 Grid) */
+/* Career Summary Timeline */
 .career-summary-timeline {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -583,12 +583,13 @@ h2 { margin: 0; max-width: 900px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-
   .chat-container { right: 0; bottom: 0; }
   .chat-window {
     position: fixed;
-    right: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 80vh;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 -8px 24px rgba(0,0,0,0.2);
+    right: 12px;
+    bottom: 70px;
+    width: calc(100vw - 24px);
+    height: 75vh;
+    max-height: 500px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
   }
 }
 
